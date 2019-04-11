@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.Text?>
+
+<GridPane 
+   fx:controller="org.openjfx.software1.MainScreenController" xmlns:fx="http://javafx.com/fxml/1" 
+   alignment="CENTER" hgap="10" vgap="10"> 
+    <padding>
+    </padding>
+    
+    <Label text="Inventory Management System"                
+        GridPane.columnIndex="0" GridPane.rowIndex="0">
+    </Label>
+    <BorderPane GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <top>
+            <HBox spacing="10" alignment="bottom_right">
+                <Label text="Parts" />
+                <Button text="Search" />
+                <TextField fx:id="searchParts" promptText="" prefWidth="150"/>
+            </HBox>
+        </top>
+        <center>
+            <TableView fx:id="parts">
+            </TableView>
+        </center>
+        <bottom>
+            <HBox spacing="10" alignment="top_right"> 
+                <Button text="Add" />
+                <Button text="Modify" />
+                <Button text="Delete" />
+            </HBox>
+        </bottom>
+    </BorderPane>
+        <BorderPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <top>
+            <HBox spacing="10" alignment="bottom_right">
+                <Label text="Products" />
+                <Button text="Search" />
+                <TextField fx:id="searchProducts" promptText="" prefWidth="150"/>
+            </HBox>
+        </top>
+        <center>
+            <TableView fx:id="products">
+            </TableView>
+        </center>
+        <bottom>
+            <HBox spacing="10" alignment="top_right"> 
+                <Button text="Add" />
+                <Button text="Modify" />
+                <Button text="Delete" />
+            </HBox>
+        </bottom>
+    </BorderPane>
+</GridPane>
