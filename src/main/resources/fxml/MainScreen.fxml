@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 
 <GridPane 
    fx:controller="org.openjfx.software1.MainScreenController" xmlns:fx="http://javafx.com/fxml/1" 
@@ -27,6 +28,28 @@
         </top>
         <center>
             <TableView fx:id="parts">
+                <columns>
+                    <TableColumn text="Part ID">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="partID" />
+                        </cellValueFactory>  
+                    </TableColumn>
+                    <TableColumn text="Part Name">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="partName" />
+                        </cellValueFactory>  
+                    </TableColumn>
+                    <TableColumn text="Inventory Level">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="partInventory" />
+                        </cellValueFactory>  
+                    </TableColumn>
+                    <TableColumn text="Price/Cost Per Unit">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="partPrice" />
+                        </cellValueFactory>  
+                    </TableColumn>
+               </columns> 
             </TableView>
         </center>
         <bottom>
@@ -37,7 +60,7 @@
             </HBox>
         </bottom>
     </BorderPane>
-        <BorderPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+    <BorderPane GridPane.columnIndex="1" GridPane.rowIndex="1">
         <top>
             <HBox spacing="10" alignment="bottom_right">
                 <Label text="Products" />
@@ -47,6 +70,28 @@
         </top>
         <center>
             <TableView fx:id="products">
+                <columns>
+                    <TableColumn text="Product ID">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="productID" />
+                        </cellValueFactory>  
+                    </TableColumn>
+                    <TableColumn text="Product Name">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="productName" />
+                        </cellValueFactory>  
+                    </TableColumn>
+                    <TableColumn text="Inventory Level">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="productInventory" />
+                        </cellValueFactory>  
+                    </TableColumn>
+                    <TableColumn text="Price Per Unit">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="productPrice" />
+                        </cellValueFactory>  
+                    </TableColumn>
+               </columns>   
             </TableView>
         </center>
         <bottom>
