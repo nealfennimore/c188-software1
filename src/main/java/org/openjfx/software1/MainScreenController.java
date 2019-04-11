@@ -42,11 +42,62 @@ public class MainScreenController implements Initializable {
     @FXML
     private TableColumn<Part, String> partPrice;
     
+    public Part getSelectedPart() {
+        return parts.getSelectionModel().getSelectedItem();
+    }
 
+    public Product getSelectedProduct() {
+        return products.getSelectionModel().getSelectedItem();
+    }
+    
+    public void renderParts() {
+        parts.setItems(GlobalInventory.getTabulatedParts());
+    }
+    
+    public void renderProducts() {
+        products.setItems(GlobalInventory.getTabulatedProducts());
+    }
 
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
+    private void handlePartAdd(ActionEvent event) {
+        // TODO
+    }
+    @FXML
+    private void handlePartEdit(ActionEvent event) {
+        Part part = getSelectedPart();
+        if( part != null ){
+            // TODO
+        }
+    }
+    @FXML
+    private void handlePartDelete(ActionEvent event) {
+        Part part = getSelectedPart();
+        if( part != null ){
+            GlobalInventory
+                .get()
+                .deletePart( part.getPartID() );
+            
+            renderParts();
+        }
+    }
+    @FXML
+    private void handleProductAdd(ActionEvent event) {
+        // TODO
+    }
+    @FXML
+    private void handleProductEdit(ActionEvent event) {
+        // TODO
+    }
+    @FXML
+    private void handleProductDelete(ActionEvent event) {
+        Product product = getSelectedProduct();
+        if( product != null ){
+            GlobalInventory
+                .get()
+                .deleteProduct( product.getProductID() );
+            
+            renderProducts();
+        }
     }
     
     /**
@@ -58,13 +109,13 @@ public class MainScreenController implements Initializable {
         productName.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
         productInventory.setCellValueFactory(new PropertyValueFactory<Product, String>("inStock"));
         productPrice.setCellValueFactory(new PropertyValueFactory<Product, String>("price"));
-        products.setItems(GlobalInventory.getTabulatedProducts());
+        renderProducts();
         
         partID.setCellValueFactory(new PropertyValueFactory<Part, String>("partID"));
         partName.setCellValueFactory(new PropertyValueFactory<Part, String>("name"));
         partInventory.setCellValueFactory(new PropertyValueFactory<Part, String>("inStock"));
         partPrice.setCellValueFactory(new PropertyValueFactory<Part, String>("price"));
-        parts.setItems(GlobalInventory.getTabulatedParts());
+        renderParts();
     }    
     
 }

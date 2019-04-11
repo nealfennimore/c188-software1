@@ -42,9 +42,9 @@
         </center>
         <bottom>
             <HBox spacing="10" alignment="top_right"> 
-                <Button text="Add" />
-                <Button text="Modify" />
-                <Button text="Delete" />
+                <Button text="Add" onAction="#handlePartAdd" />
+                <Button text="Modify" onAction="#handlePartEdit" />
+                <Button text="Delete" onAction="#handlePartDelete" />
             </HBox>
         </bottom>
     </BorderPane>
@@ -72,9 +72,9 @@
         </center>
         <bottom>
             <HBox spacing="10" alignment="top_right"> 
-                <Button text="Add" />
-                <Button text="Modify" />
-                <Button text="Delete" />
+                <Button text="Add" onAction="#handleProductAdd" />
+                <Button text="Modify" onAction="#handleProductEdit" />
+                <Button text="Delete" onAction="#handleProductDelete" />
             </HBox>
         </bottom>
     </BorderPane>
