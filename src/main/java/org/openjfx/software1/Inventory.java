@@ -6,6 +6,8 @@
 package org.openjfx.software1;
 
 import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -19,6 +21,20 @@ public class Inventory {
     public Inventory( ArrayList<Product> products, ArrayList<Part> allParts) {
         this.products = products;
         this.allParts = allParts;
+    }
+    
+    /**
+     * @return the products
+     */
+    public ArrayList<Product> getProducts() {
+        return products;
+    }
+
+    /**
+     * @return the allParts
+     */
+    public ArrayList<Part> getAllParts() {
+        return allParts;
     }
 
     /**
@@ -95,4 +111,11 @@ public class Inventory {
     public void updatePart(int partID) {
     }
 
+    public ObservableList getTabulatedProducts() {
+        return FXCollections.observableArrayList( getProducts());
+    }
+
+    public ObservableList getTabulatedParts() {
+        return FXCollections.observableArrayList( getAllParts());
+    }
 }

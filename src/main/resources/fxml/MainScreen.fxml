@@ -29,25 +29,13 @@
         <center>
             <TableView fx:id="parts">
                 <columns>
-                    <TableColumn text="Part ID">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="partID" />
-                        </cellValueFactory>  
+                    <TableColumn text="Part ID" fx:id="partID">
                     </TableColumn>
-                    <TableColumn text="Part Name">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="partName" />
-                        </cellValueFactory>  
+                    <TableColumn text="Part Name" fx:id="partName"> 
                     </TableColumn>
-                    <TableColumn text="Inventory Level">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="partInventory" />
-                        </cellValueFactory>  
+                    <TableColumn text="Inventory Level" fx:id="partInventory">
                     </TableColumn>
-                    <TableColumn text="Price/Cost Per Unit">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="partPrice" />
-                        </cellValueFactory>  
+                    <TableColumn text="Price/Cost Per Unit" fx:id="partPrice">
                     </TableColumn>
                </columns> 
             </TableView>
@@ -71,25 +59,13 @@
         <center>
             <TableView fx:id="products">
                 <columns>
-                    <TableColumn text="Product ID">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="productID" />
-                        </cellValueFactory>  
+                    <TableColumn text="Product ID" fx:id="productID">
                     </TableColumn>
-                    <TableColumn text="Product Name">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="productName" />
-                        </cellValueFactory>  
+                    <TableColumn text="Product Name" fx:id="productName"> 
                     </TableColumn>
-                    <TableColumn text="Inventory Level">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="productInventory" />
-                        </cellValueFactory>  
+                    <TableColumn text="Inventory Level" fx:id="productInventory">
                     </TableColumn>
-                    <TableColumn text="Price Per Unit">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="productPrice" />
-                        </cellValueFactory>  
+                    <TableColumn text="Price Per Unit" fx:id="productPrice">
                     </TableColumn>
                </columns>   
             </TableView>

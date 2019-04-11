@@ -21,6 +21,10 @@ public class Product {
     private int max;
     private ArrayList<Part> associatedParts;
 
+    public Product(){
+        this(1, "Product", 1.00, 1, 1, 10, new ArrayList<Part>() );
+    }
+
     public Product(int productID, String name, double price, int inStock, int min, int max, ArrayList<Part> associatedParts) {
         this.productID = productID;
         this.name = name;

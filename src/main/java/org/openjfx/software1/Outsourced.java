@@ -12,7 +12,11 @@ package org.openjfx.software1;
 public class Outsourced extends Part {
 
     private String companyName;
-
+    
+    public Outsourced(){
+        this(2, "Outsourced Part", 1.00, 1, 1, 10, "Company" );
+    }
+    
     public Outsourced( int partID, String name, double price, int inStock, int min, int max, String companyName ) {
         super(partID, name, price, inStock, min, max);
         setCompanyName(companyName);
