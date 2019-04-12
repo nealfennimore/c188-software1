@@ -27,7 +27,3 @@ public class SceneController {
         main.setRoot(pane);
     }
 }
-//
-//screenController.add("calculator", FXMLLoader.load(getClass().getResource( "calculator.fxml" )));
-//screenController.add("testSwitch", FXMLLoader.load(getClass().getResource( "TestSwitch.fxml" )));
-//screenController.activate("calculator");

@@ -20,32 +20,36 @@
     <center>
         <GridPane alignment="CENTER" hgap="10" vgap="10">
             <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="1">
-                <Label prefWidth="50" text="ID" />
+                <Label prefWidth="100" text="ID" />
                 <TextField text="Auto Gen - Disabled" editable="false" />
             </HBox>
             <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="2">
-                <Label prefWidth="50" text="Name" />
+                <Label prefWidth="100" text="Name" />
                 <TextField fx:id="name" promptText="Part Name" />
             </HBox>
             <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="3">
-                <Label prefWidth="50" text="Inv" />
+                <Label prefWidth="100" text="Inv" />
                 <TextField fx:id="stock" promptText="Inv" />
             </HBox>
             <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="4">
-                <Label prefWidth="50" text="Price/Cost" />
+                <Label prefWidth="100" text="Price/Cost" />
                 <TextField fx:id="price" promptText="Price/Cost" />
             </HBox>
             <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="5">
-                <Label prefWidth="50" text="Max" />
+                <Label prefWidth="100" text="Max" />
                 <TextField fx:id="max" promptText="Max" />
             </HBox>
             <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="5">
                 <Label prefWidth="50" text="Min" />
                 <TextField fx:id="min" promptText="Min" />
             </HBox>
-            <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="6">
-                <Label prefWidth="50" text="Machine ID" />
+            <HBox fx:id="machineIDBox" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="6">
+                <Label prefWidth="100" text="Machine ID" />
                 <TextField fx:id="machineID" promptText="Mach ID" />
+            </HBox>
+            <HBox fx:id="companyBox" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="6" visible="false">
+                <Label prefWidth="100" text="Company" />
+                <TextField fx:id="company" promptText="Company" />
             </HBox>
         </GridPane>
     </center>

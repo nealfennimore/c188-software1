@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.HBox;
 
 /**
  * FXML Controller class
@@ -30,6 +31,10 @@ public class AddPartController implements Initializable {
     @FXML TextField max;
     @FXML TextField min;
     @FXML TextField machineID;
+    @FXML TextField company;
+    
+    @FXML HBox machineIDBox;
+    @FXML HBox companyBox;
 
     private String getPartType() {
         RadioButton selectedRadioButton = (RadioButton) partType.getSelectedToggle();
@@ -39,9 +44,11 @@ public class AddPartController implements Initializable {
     @FXML private void handleRadioToggle(ActionEvent event) {
         String type = getPartType();
         if ( type.contains("In-House") ){
-            machineID.setEditable(true);
+            machineIDBox.setVisible(true);
+            companyBox.setVisible(false);
         } else {
-            machineID.setEditable(false);
+            machineIDBox.setVisible(false);
+            companyBox.setVisible(true  );
         }
     }
     
