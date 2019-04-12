@@ -22,7 +22,7 @@
         <top>
             <HBox spacing="10" alignment="bottom_right">
                 <Label text="Parts" />
-                <Button text="Search" />
+                <Button text="Search" onAction="#handlePartSearch" />
                 <TextField fx:id="searchParts" promptText="" prefWidth="150"/>
             </HBox>
         </top>
@@ -52,7 +52,7 @@
         <top>
             <HBox spacing="10" alignment="bottom_right">
                 <Label text="Products" />
-                <Button text="Search" />
+                <Button text="Search" onAction="#handleProductSearch" />
                 <TextField fx:id="searchProducts" promptText="" prefWidth="150"/>
             </HBox>
         </top>

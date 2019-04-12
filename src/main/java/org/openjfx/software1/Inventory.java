@@ -111,11 +111,13 @@ public class Inventory {
     public void updatePart(int partID) {
     }
 
-    public ObservableList getTabulatedProducts() {
-        return FXCollections.observableArrayList( getProducts());
+    public ObservableList getTabulatedProducts(ArrayList<Product> productsList) {
+        ArrayList<Product> list = productsList == null ? getProducts() : productsList;
+        return FXCollections.observableArrayList( list );
     }
 
-    public ObservableList getTabulatedParts() {
-        return FXCollections.observableArrayList( getAllParts());
+    public ObservableList getTabulatedParts(ArrayList<Part> partsList) {
+        ArrayList<Part> list = partsList == null ? getAllParts() : partsList; 
+        return FXCollections.observableArrayList( list );
     }
 }

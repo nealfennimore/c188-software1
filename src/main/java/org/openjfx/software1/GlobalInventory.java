@@ -34,10 +34,10 @@ public class GlobalInventory {
    public static ArrayList<Part> getParts() { 
       return self.getAllParts();
    }
-   public static ObservableList getTabulatedProducts() { 
-      return self.getTabulatedProducts();
+   public static ObservableList getTabulatedProducts(ArrayList<Product> products) { 
+      return self.getTabulatedProducts(products);
    }
-   public static ObservableList getTabulatedParts() { 
-      return self.getTabulatedParts();
+   public static ObservableList getTabulatedParts(ArrayList<Part> parts) { 
+      return self.getTabulatedParts(parts);
    }
 }
