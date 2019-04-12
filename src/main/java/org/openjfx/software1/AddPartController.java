@@ -5,10 +5,12 @@
  */
 package org.openjfx.software1;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -33,7 +35,7 @@ public class AddPartController implements Initializable {
         RadioButton selectedRadioButton = (RadioButton) partType.getSelectedToggle();
         return selectedRadioButton.getText();
     }
-    
+
     @FXML private void handleRadioToggle(ActionEvent event) {
         String type = getPartType();
         if ( type.contains("In-House") ){
@@ -43,7 +45,7 @@ public class AddPartController implements Initializable {
         }
     }
     
-    @FXML private void handleSave(ActionEvent event) {
+    @FXML private void handleSave(ActionEvent event) throws IOException {
         String type = getPartType();
 
         if( type.contains("In-House") ){
@@ -70,18 +72,24 @@ public class AddPartController implements Initializable {
            GlobalInventory.get().addPart(part);
         }
 
-        SceneController.activate("main");
+        loadMainScreen();
     }
     
-    @FXML private void handleCancel(ActionEvent event) {
-        SceneController.activate("main");
+    @FXML private void handleCancel(ActionEvent event) throws IOException {
+        loadMainScreen();
+    }
+
+    @FXML private void loadAddPart(ActionEvent event) throws IOException {
+        SceneController.load(FXMLLoader.load(getClass().getResource( "/fxml/AddPart.fxml" )));
     }
     
+    @FXML private void loadMainScreen() throws IOException {
+        SceneController.load(FXMLLoader.load(getClass().getResource( "/fxml/MainScreen.fxml" )));
+    }
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    }    
-    
+    }
 }

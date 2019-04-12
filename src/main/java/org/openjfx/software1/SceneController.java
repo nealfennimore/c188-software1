@@ -14,7 +14,6 @@ import javafx.scene.layout.Pane;
  * @author neal
  */
 public class SceneController {
-    private static HashMap<String, Pane> sceneMap = new HashMap<>();
     private static Scene main;
 
     /**
@@ -24,16 +23,8 @@ public class SceneController {
         SceneController.main = main;
     }
 
-    protected static void addScene(String name, Pane pane){
-        sceneMap.put(name, pane);
-    }
-
-    protected static void removeScene(String name){
-        sceneMap.remove(name);
-    }
-
-    protected static void activate(String name){
-        main.setRoot( sceneMap.get(name) );
+    protected static void load(Pane pane) {
+        main.setRoot(pane);
     }
 }
 //

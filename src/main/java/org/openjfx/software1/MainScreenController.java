@@ -5,12 +5,14 @@
  */
 package org.openjfx.software1;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -59,8 +61,8 @@ public class MainScreenController implements Initializable {
         products.setItems(items);
     }
 
-    @FXML private void handlePartAdd(ActionEvent event) {
-        SceneController.activate("addPart");
+    @FXML private void handlePartAdd(ActionEvent event) throws IOException {
+        loadAddPart();
     }
     @FXML private void handlePartEdit(ActionEvent event) {
         Part part = getSelectedPart();
@@ -96,8 +98,8 @@ public class MainScreenController implements Initializable {
             renderParts(null);
         }
     }
-    @FXML private void handleProductAdd(ActionEvent event) {
-        SceneController.activate("addProduct");
+    @FXML private void handleProductAdd(ActionEvent event) throws IOException {
+        loadAddProduct();
     }
     @FXML private void handleProductEdit(ActionEvent event) {
         // TODO
@@ -133,6 +135,14 @@ public class MainScreenController implements Initializable {
     @FXML private void handleExit(ActionEvent event) {
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
+    }
+    
+    @FXML private void loadAddPart() throws IOException {
+        SceneController.load(FXMLLoader.load(getClass().getResource( "/fxml/AddPart.fxml" )));
+    }
+    
+    @FXML private void loadAddProduct() throws IOException {
+        SceneController.load(FXMLLoader.load(getClass().getResource( "/fxml/AddProduct.fxml" )));
     }
     
     /**

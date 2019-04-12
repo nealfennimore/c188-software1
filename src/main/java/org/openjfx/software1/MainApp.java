@@ -15,11 +15,7 @@ public class MainApp extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainScreen.fxml"));
         
         Scene scene = new Scene(root);
-
         SceneController.setMain(scene);
-        SceneController.addScene("main", FXMLLoader.load(getClass().getResource("/fxml/MainScreen.fxml")));
-        SceneController.addScene("addPart", FXMLLoader.load(getClass().getResource( "/fxml/AddPart.fxml" )));
-        SceneController.addScene("addProduct", FXMLLoader.load(getClass().getResource( "/fxml/AddProduct.fxml" )));
         
         stage.setTitle("Inventory Management");
         stage.setScene(scene);
