@@ -16,6 +16,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -37,6 +38,8 @@ public class MainScreenController implements Initializable {
 
     @FXML TextField searchParts;
     @FXML TextField searchProducts;
+    
+    @FXML private javafx.scene.control.Button exitButton;
     
     public Part getSelectedPart() {
         return parts.getSelectionModel().getSelectedItem();
@@ -125,6 +128,11 @@ public class MainScreenController implements Initializable {
         } else {
             renderProducts(null);
         }
+    }
+    
+    @FXML private void handleExit(ActionEvent event) {
+        Stage stage = (Stage) exitButton.getScene().getWindow();
+        stage.close();
     }
     
     /**
