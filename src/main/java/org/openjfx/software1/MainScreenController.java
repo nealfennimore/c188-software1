@@ -41,26 +41,26 @@ public class MainScreenController implements Initializable {
     
     @FXML private javafx.scene.control.Button exitButton;
     
-    public Part getSelectedPart() {
+    private Part getSelectedPart() {
         return parts.getSelectionModel().getSelectedItem();
     }
 
-    public Product getSelectedProduct() {
+    private Product getSelectedProduct() {
         return products.getSelectionModel().getSelectedItem();
     }
     
-    public void renderParts( ObservableList partItems ) {
+    private void renderParts( ObservableList partItems ) {
         ObservableList items = partItems == null ? GlobalInventory.getTabulatedParts(null) : partItems;
         parts.setItems(items);
     }
     
-    public void renderProducts(ObservableList productItems) {
+    private void renderProducts(ObservableList productItems) {
         ObservableList items = productItems == null ? GlobalInventory.getTabulatedProducts(null) : productItems;
         products.setItems(items);
     }
 
     @FXML private void handlePartAdd(ActionEvent event) {
-        // TODO
+        SceneController.activate("addPart");
     }
     @FXML private void handlePartEdit(ActionEvent event) {
         Part part = getSelectedPart();
@@ -97,7 +97,7 @@ public class MainScreenController implements Initializable {
         }
     }
     @FXML private void handleProductAdd(ActionEvent event) {
-        // TODO
+        SceneController.activate("addProduct");
     }
     @FXML private void handleProductEdit(ActionEvent event) {
         // TODO
