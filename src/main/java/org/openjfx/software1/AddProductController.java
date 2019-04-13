@@ -15,6 +15,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -102,19 +104,28 @@ public class AddProductController implements Initializable {
     }
     
     @FXML private void handleSave(ActionEvent event) throws IOException {
-        Product product = new Product(
-            GlobalInventory.getProducts().size() + 1,
-            name.getText(),
-            Double.parseDouble( price.getText() ),
-            Integer.parseInt( stock.getText() ),
-            Integer.parseInt( min.getText() ),
-            Integer.parseInt( max.getText() ),
-            productPartsList
-        );
-        
-        GlobalInventory.get().addProduct(product);
-        
-        loadMainScreen();
+        if( productPartsList.size() > 0 ){
+            Product product = new Product(
+                GlobalInventory.getProducts().size() + 1,
+                name.getText(),
+                Double.parseDouble( price.getText() ),
+                Integer.parseInt( stock.getText() ),
+                Integer.parseInt( min.getText() ),
+                Integer.parseInt( max.getText() ),
+                productPartsList
+            );
+
+            GlobalInventory.get().addProduct(product);
+
+            loadMainScreen();
+        } else {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Please add a part to the product.");
+
+            alert.showAndWait();
+        }
     }
     
     @FXML private void handleCancel(ActionEvent event) throws IOException {
