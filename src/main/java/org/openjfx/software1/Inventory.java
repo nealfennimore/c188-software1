@@ -71,7 +71,12 @@ public class Inventory {
     /**
      * @param productID
      */
-    public void updateProduct(int productID) {
+    public void updateProduct(int productID, Product product) {
+        Product current = lookupProduct(productID);
+        if (current != null) {
+            int index = products.indexOf(current);
+            products.set(index, product);
+        }
     }
 
     /**
@@ -108,7 +113,12 @@ public class Inventory {
     /**
      * @param partID
      */
-    public void updatePart(int partID) {
+    public void updatePart(int partID, Part part) {
+        Part current = lookupPart(partID);
+        if ( current != null ){
+            int index = allParts.indexOf(current);
+            allParts.set(index, part);
+        }
     }
 
     public ObservableList getTabulatedProducts(ArrayList<Product> productsList) {

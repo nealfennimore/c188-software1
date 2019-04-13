@@ -27,6 +27,38 @@ public class GlobalInventory {
             )
         )
    );
+
+   private static Part activePart;
+   private static Product activeProduct;
+
+   /**
+    * @param activePart the activePart to set
+    */
+   public static void setActivePart(Part activePart) {
+      GlobalInventory.activePart = activePart;
+   }
+   
+   /**
+    * @return the activePart
+    */
+   public static Part getActivePart() {
+      return activePart;
+   }
+
+   /**
+    * @param activeProduct the activeProduct to set
+    */
+   public static void setActiveProduct(Product activeProduct) {
+      GlobalInventory.activeProduct = activeProduct;
+   }
+
+   /**
+    * @return the activeProduct
+    */
+   public static Product getActiveProduct() {
+      return activeProduct;
+   }
+
    public static Inventory get() { return self; } 
    public static ArrayList<Product> getProducts() { 
       return self.getProducts();

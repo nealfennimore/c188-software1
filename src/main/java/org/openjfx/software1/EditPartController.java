@@ -22,9 +22,12 @@ import javafx.scene.layout.HBox;
  *
  * @author neal
  */
-public class AddPartController implements Initializable {  
+public class EditPartController implements Initializable {  
     
-    @FXML ToggleGroup partType; //I called it right in SceneBuilder.
+    @FXML ToggleGroup partType;
+    @FXML RadioButton inhouse;
+    @FXML RadioButton outsourced;
+    @FXML TextField partID;
     @FXML TextField name;
     @FXML TextField stock;
     @FXML TextField price;
@@ -41,9 +44,12 @@ public class AddPartController implements Initializable {
         return selectedRadioButton.getText();
     }
 
-    @FXML private void handleRadioToggle(ActionEvent event) {
-        String type = getPartType();
-        if ( type.contains("In-House") ){
+    private String getPartID() {
+        return partID.getText();
+    }
+    
+    @FXML private void setPartTypeFieldVisibility(boolean isInHouse){
+        if ( isInHouse ){
             machineIDBox.setVisible(true);
             companyBox.setVisible(false);
         } else {
@@ -51,13 +57,19 @@ public class AddPartController implements Initializable {
             companyBox.setVisible(true  );
         }
     }
+
+    @FXML private void handleRadioToggle(ActionEvent event) {
+        String type = getPartType();
+        setPartTypeFieldVisibility( type.contains("In-House") );
+    }
     
     @FXML private void handleSave(ActionEvent event) throws IOException {
         String type = getPartType();
+        int id = Integer.parseInt( getPartID() );
 
         if( type.contains("In-House") ){
             InHouse part = new InHouse(
-                GlobalInventory.getParts().size() + 1,
+                id,
                 name.getText(),
                 Double.parseDouble( price.getText() ),
                 Integer.parseInt( stock.getText() ),
@@ -65,10 +77,10 @@ public class AddPartController implements Initializable {
                 Integer.parseInt( max.getText() ),
                 Integer.parseInt( machineID.getText() )
             );
-            GlobalInventory.get().addPart(part);
+            GlobalInventory.get().updatePart(id, part);
         } else {
            Outsourced part = new Outsourced(
-                GlobalInventory.getParts().size() + 1,
+                id,
                 name.getText(),
                 Double.parseDouble( price.getText() ),
                 Integer.parseInt( stock.getText() ),
@@ -76,13 +88,14 @@ public class AddPartController implements Initializable {
                 Integer.parseInt( max.getText() ),
                 company.getText()
            );
-           GlobalInventory.get().addPart(part);
+            GlobalInventory.get().updatePart(id, part);
         }
-
+        GlobalInventory.setActivePart(null);
         loadMainScreen();
     }
     
     @FXML private void handleCancel(ActionEvent event) throws IOException {
+        GlobalInventory.setActivePart(null);
         loadMainScreen();
     }
 
@@ -94,5 +107,24 @@ public class AddPartController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Part part = GlobalInventory.getActivePart();
+        boolean isInHouse = part instanceof InHouse;
+        
+        partID.setText( Integer.toString( part.getPartID() ));
+        name.setText( part.getName() );
+        stock.setText( Integer.toString( part.getInStock() ));
+        price.setText( Double.toString( part.getPrice() ));
+        max.setText( Integer.toString( part.getMax() ));
+        min.setText( Integer.toString( part.getMin() ));       
+        
+        if(isInHouse){
+            machineID.setText( Integer.toString( ((InHouse)part).getMachineID() ));
+            inhouse.setSelected(true);
+        } else {
+            company.setText( ((Outsourced)part).getCompanyName() );
+            outsourced.setSelected(true);
+        }
+        
+        setPartTypeFieldVisibility(isInHouse);
     }
 }

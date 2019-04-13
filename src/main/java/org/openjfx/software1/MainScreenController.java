@@ -64,10 +64,12 @@ public class MainScreenController implements Initializable {
     @FXML private void handlePartAdd(ActionEvent event) throws IOException {
         loadAddPart();
     }
-    @FXML private void handlePartEdit(ActionEvent event) {
+
+    @FXML private void handlePartEdit(ActionEvent event) throws IOException {
         Part part = getSelectedPart();
         if( part != null ){
-            // TODO
+            GlobalInventory.setActivePart(part);
+            loadEditPart();
         }
     }
     @FXML private void handlePartDelete(ActionEvent event) {
@@ -101,8 +103,12 @@ public class MainScreenController implements Initializable {
     @FXML private void handleProductAdd(ActionEvent event) throws IOException {
         loadAddProduct();
     }
-    @FXML private void handleProductEdit(ActionEvent event) {
-        // TODO
+    @FXML private void handleProductEdit(ActionEvent event) throws IOException {
+        Product product = getSelectedProduct();
+        if (product != null) {
+            GlobalInventory.setActiveProduct(product);
+            loadEditProduct();
+        }
     }
     @FXML private void handleProductDelete(ActionEvent event) {
         Product product = getSelectedProduct();
@@ -140,9 +146,17 @@ public class MainScreenController implements Initializable {
     @FXML private void loadAddPart() throws IOException {
         SceneController.load(FXMLLoader.load(getClass().getResource( "/fxml/AddPart.fxml" )));
     }
+
+    @FXML private void loadEditPart() throws IOException {
+        SceneController.load(FXMLLoader.load(getClass().getResource( "/fxml/EditPart.fxml" )));
+    }
     
     @FXML private void loadAddProduct() throws IOException {
         SceneController.load(FXMLLoader.load(getClass().getResource( "/fxml/AddProduct.fxml" )));
+    }
+
+    @FXML private void loadEditProduct() throws IOException {
+        SceneController.load(FXMLLoader.load(getClass().getResource( "/fxml/EditProduct.fxml" )));
     }
     
     /**
