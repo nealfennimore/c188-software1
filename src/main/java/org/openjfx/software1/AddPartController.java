@@ -7,11 +7,15 @@ package org.openjfx.software1;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -83,7 +87,15 @@ public class AddPartController implements Initializable {
     }
     
     @FXML private void handleCancel(ActionEvent event) throws IOException {
-        loadMainScreen();
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Leave this screen?");
+        alert.setContentText("Any unsaved changes will be lost.");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            loadMainScreen();
+        }
     }
 
     @FXML private void loadMainScreen() throws IOException {
