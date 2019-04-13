@@ -119,6 +119,12 @@ public class Product {
         return max;
     }
 
+    /**
+     * @return the associatedParts
+     */
+    public ArrayList<Part> getAssociatedParts() {
+        return associatedParts;
+    }
 
     /**
      * @param part the part to add
