@@ -8,12 +8,16 @@ package org.openjfx.software1;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -74,7 +78,13 @@ public class MainScreenController implements Initializable {
     }
     @FXML private void handlePartDelete(ActionEvent event) {
         Part part = getSelectedPart();
-        if( part != null ){
+
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setContentText("Do you want to delete this Part?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK && part != null) {
             GlobalInventory
                 .get()
                 .deletePart( part.getPartID() );
@@ -112,7 +122,13 @@ public class MainScreenController implements Initializable {
     }
     @FXML private void handleProductDelete(ActionEvent event) {
         Product product = getSelectedProduct();
-        if( product != null ){
+
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setContentText("Do you want to delete this Product?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK && product != null) {
             GlobalInventory
                 .get()
                 .deleteProduct( product.getProductID() );

@@ -100,7 +100,13 @@ public class EditProductController implements Initializable {
 
     @FXML private void handlePartDelete(ActionEvent event) {
         Part part = getSelectedProductPart();
-        if (part != null) {
+
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setContentText("Do you want to delete this Part?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK && part != null) {
             productPartsList.remove(part);
             renderSelectedParts();
         }
