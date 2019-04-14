@@ -113,7 +113,12 @@ public class EditProductController implements Initializable {
     }
     
     @FXML private void handleSave(ActionEvent event) throws IOException {
-        if( productPartsList.size() > 0 ){
+        
+        try {
+            if( productPartsList.size() == 0 ){
+                throw new Exception("Must have at least one product");
+            }
+            
             int id = Integer.parseInt(productID.getText());
 
             Product product = new Product(
@@ -128,8 +133,8 @@ public class EditProductController implements Initializable {
 
             GlobalInventory.get().updateProduct(id, product);
             loadMainScreen();
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
+        } catch(Exception e){
+            Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Error");
             alert.setContentText("Please add a part to the product.");

@@ -13,13 +13,9 @@ import javafx.collections.ObservableList;
  *
  * @author neal
  */
-public class GlobalInventory {
+public class GlobalInventory {  
    private static Inventory self = new Inventory(
-        new ArrayList<Product>(
-            Arrays.asList(
-                new Product()
-            )
-        ),
+        new ArrayList<Product>(),
         new ArrayList<Part>(
             Arrays.asList(
                 new InHouse(),

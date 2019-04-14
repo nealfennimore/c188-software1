@@ -112,7 +112,12 @@ public class AddProductController implements Initializable {
     }
     
     @FXML private void handleSave(ActionEvent event) throws IOException {
-        if( productPartsList.size() > 0 ){
+        
+        try {
+            if( productPartsList.size() == 0 ){
+                throw new Exception("Must have at least one product");
+            }
+            
             Product product = new Product(
                 GlobalInventory.getProducts().size() + 1,
                 name.getText(),
@@ -126,7 +131,7 @@ public class AddProductController implements Initializable {
             GlobalInventory.get().addProduct(product);
 
             loadMainScreen();
-        } else {
+        } catch(Exception e){
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Error");
