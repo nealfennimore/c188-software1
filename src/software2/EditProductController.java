@@ -101,14 +101,22 @@ public class EditProductController implements Initializable {
     @FXML private void handlePartDelete(ActionEvent event) {
         Part part = getSelectedProductPart();
 
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation");
-        alert.setContentText("Do you want to delete this Part?");
+        try {
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setContentText("Do you want to delete this Part?");
 
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK && part != null) {
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.get() != ButtonType.OK) {
+                throw new Exception("Cancelled.");
+            } else if (part == null) {
+                throw new Exception("No part");
+            }
             productPartsList.remove(part);
             renderSelectedParts();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
     
@@ -144,14 +152,20 @@ public class EditProductController implements Initializable {
     }
     
     @FXML private void handleCancel(ActionEvent event) throws IOException {
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation");
-        alert.setHeaderText("Leave this screen?");
-        alert.setContentText("Any unsaved changes will be lost.");
-        
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
+        try {
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText("Leave this screen?");
+            alert.setContentText("Any unsaved changes will be lost.");
+
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.get() != ButtonType.OK) {
+                throw new Exception("Cancelled.");
+            }
             loadMainScreen();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 

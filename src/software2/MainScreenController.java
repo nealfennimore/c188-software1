@@ -79,17 +79,22 @@ public class MainScreenController implements Initializable {
     @FXML private void handlePartDelete(ActionEvent event) {
         Part part = getSelectedPart();
 
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation");
-        alert.setContentText("Do you want to delete this Part?");
+        try {
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setContentText("Do you want to delete this Part?");
 
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK && part != null) {
-            GlobalInventory
-                .get()
-                .deletePart( part.getPartID() );
-            
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.get() != ButtonType.OK) {
+                throw new Exception("Cancelled.");
+            } else if (part == null) {
+                throw new Exception("No part");
+            }
+            GlobalInventory.get().deletePart(part.getPartID());
             renderParts(null);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
     
@@ -123,17 +128,22 @@ public class MainScreenController implements Initializable {
     @FXML private void handleProductDelete(ActionEvent event) {
         Product product = getSelectedProduct();
 
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation");
-        alert.setContentText("Do you want to delete this Product?");
+        try {
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setContentText("Do you want to delete this Product?");
 
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK && product != null) {
-            GlobalInventory
-                .get()
-                .deleteProduct( product.getProductID() );
-            
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.get() != ButtonType.OK) {
+                throw new Exception("Cancelled.");
+            } else if (product == null) {
+                throw new Exception("No product");
+            }
+            GlobalInventory.get().deleteProduct(product.getProductID());
             renderProducts(null);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
     @FXML private void handleProductSearch(ActionEvent event) {

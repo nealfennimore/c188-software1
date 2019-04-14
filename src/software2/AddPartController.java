@@ -87,14 +87,20 @@ public class AddPartController implements Initializable {
     }
     
     @FXML private void handleCancel(ActionEvent event) throws IOException {
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation");
-        alert.setHeaderText("Leave this screen?");
-        alert.setContentText("Any unsaved changes will be lost.");
+        try {
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText("Leave this screen?");
+            alert.setContentText("Any unsaved changes will be lost.");
 
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK) {
+            Optional<ButtonType> result = alert.showAndWait();
+            
+            if(result.get() != ButtonType.OK){
+                throw new Exception("Cancelled.");
+            }
             loadMainScreen();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 
