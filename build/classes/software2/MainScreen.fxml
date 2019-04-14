@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<GridPane 
+   fx:controller="software2.MainScreenController" xmlns:fx="http://javafx.com/fxml/1" 
+   alignment="CENTER" hgap="10" vgap="10"> 
+    <padding>
+    </padding>
+    
+    <Label text="Inventory Management System"                
+        GridPane.columnIndex="0" GridPane.rowIndex="0">
+    </Label>
+    <BorderPane GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <top>
+            <HBox spacing="10" alignment="bottom_right">
+                <Label text="Parts" />
+                <Button text="Search" onAction="#handlePartSearch" />
+                <TextField fx:id="searchParts" promptText="" prefWidth="150"/>
+            </HBox>
+        </top>
+        <center>
+            <TableView fx:id="parts">
+                <columns>
+                    <TableColumn text="Part ID" fx:id="partID">
+                    </TableColumn>
+                    <TableColumn text="Part Name" fx:id="partName"> 
+                    </TableColumn>
+                    <TableColumn text="Inventory Level" fx:id="partInventory">
+                    </TableColumn>
+                    <TableColumn text="Price/Cost Per Unit" fx:id="partPrice">
+                    </TableColumn>
+               </columns> 
+            </TableView>
+        </center>
+        <bottom>
+            <HBox spacing="10" alignment="top_right"> 
+                <Button text="Add" onAction="#loadAddPart" />
+                <Button text="Modify" onAction="#handlePartEdit" />
+                <Button text="Delete" onAction="#handlePartDelete" />
+            </HBox>
+        </bottom>
+    </BorderPane>
+    <BorderPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <top>
+            <HBox spacing="10" alignment="bottom_right">
+                <Label text="Products" />
+                <Button text="Search" onAction="#handleProductSearch" />
+                <TextField fx:id="searchProducts" promptText="" prefWidth="150"/>
+            </HBox>
+        </top>
+        <center>
+            <TableView fx:id="products">
+                <columns>
+                    <TableColumn text="Product ID" fx:id="productID">
+                    </TableColumn>
+                    <TableColumn text="Product Name" fx:id="productName"> 
+                    </TableColumn>
+                    <TableColumn text="Inventory Level" fx:id="productInventory">
+                    </TableColumn>
+                    <TableColumn text="Price Per Unit" fx:id="productPrice">
+                    </TableColumn>
+               </columns>   
+            </TableView>
+        </center>
+        <bottom>
+            <HBox spacing="10" alignment="top_right"> 
+                <Button text="Add" onAction="#loadAddProduct" />
+                <Button text="Modify" onAction="#handleProductEdit" />
+                <Button text="Delete" onAction="#handleProductDelete" />
+            </HBox>
+        </bottom>
+    </BorderPane>
+    <HBox spacing="10" alignment="bottom_right" GridPane.columnIndex="1" GridPane.rowIndex="2"> 
+        <Button text="Exit" fx:id="exitButton" onAction="#handleExit" />
+    </HBox>
+</GridPane>

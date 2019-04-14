@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane prefHeight="2000.0" prefWidth="2000.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="software2.AddProductController">
+    <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="0">
+        <Label text="Add Product" />
+    </HBox>
+
+    <VBox GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <GridPane>
+            <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                <Label prefWidth="100" text="ID" />
+                <TextField text="Auto Gen - Disabled" editable="false" />
+            </HBox>
+            <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                <Label prefWidth="100" text="Name" />
+                <TextField fx:id="name" promptText="Part Name" />
+            </HBox>
+            <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                <Label prefWidth="100" text="Inv" />
+                <TextField fx:id="stock" promptText="Inv" />
+            </HBox>
+            <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                <Label prefWidth="100" text="Price/Cost" />
+                <TextField fx:id="price" promptText="Price/Cost" />
+            </HBox>
+            <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="5">
+                <Label prefWidth="100" text="Max" />
+                <TextField fx:id="max" promptText="Max" />
+            </HBox>
+            <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                <Label prefWidth="50" text="Min" />
+                <TextField fx:id="min" promptText="Min" />
+            </HBox>
+        </GridPane>
+    </VBox>
+
+    
+    <VBox GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <HBox spacing="10">
+            <Button text="Search" onAction="#handlePartSearch" />
+            <TextField fx:id="searchParts" promptText="" prefWidth="150"/>
+        </HBox>
+
+        <VBox spacing="10">
+            <TableView fx:id="parts">
+                <columns>
+                    <TableColumn text="Part ID" fx:id="partID">
+                    </TableColumn>
+                    <TableColumn text="Part Name" fx:id="partName"> 
+                    </TableColumn>
+                    <TableColumn text="Inventory Level" fx:id="partInventory">
+                    </TableColumn>
+                    <TableColumn text="Price/Cost Per Unit" fx:id="partPrice">
+                    </TableColumn>
+            </columns> 
+            </TableView>
+            <Button text="Add" onAction="#handlePartAdd" />
+        </VBox>
+
+        <VBox spacing="10">
+            <TableView fx:id="productParts">
+                <columns>
+                    <TableColumn text="Part ID" fx:id="productPartID">
+                    </TableColumn>
+                    <TableColumn text="Part Name" fx:id="productPartName"> 
+                    </TableColumn>
+                    <TableColumn text="Inventory Level" fx:id="productPartInventory">
+                    </TableColumn>
+                    <TableColumn text="Price/Cost Per Unit" fx:id="productPartPrice">
+                    </TableColumn>
+            </columns> 
+            </TableView>
+            <Button text="Delete" onAction="#handlePartDelete" />
+        </VBox>
+    </VBox>
+    
+    <HBox spacing="10" alignment="center_right" GridPane.columnIndex="1" GridPane.rowIndex="2">
+        <Button text="Save" fx:id="saveButton" onAction="#handleSave" />
+        <Button text="Cancel" fx:id="cancelButton" onAction="#handleCancel" />
+    </HBox>
+</GridPane>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="software2.AddPartController">
+    <top>
+        <HBox spacing="10" alignment="top_left">
+            <Label text="Add Part" />
+            <fx:define>
+                <ToggleGroup fx:id="partType" />
+            </fx:define>   
+            <RadioButton text="In-House" toggleGroup="$partType" fx:id="inhouse" selected="true" onAction="#handleRadioToggle" />
+            <RadioButton text="Outsourced" toggleGroup="$partType" fx:id="outsourced" onAction="#handleRadioToggle"/>
+        </HBox>
+    </top>
+    <center>
+        <GridPane alignment="CENTER" hgap="10" vgap="10">
+            <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                <Label prefWidth="100" text="ID" />
+                <TextField text="Auto Gen - Disabled" editable="false" />
+            </HBox>
+            <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                <Label prefWidth="100" text="Name" />
+                <TextField fx:id="name" promptText="Part Name" />
+            </HBox>
+            <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                <Label prefWidth="100" text="Inv" />
+                <TextField fx:id="stock" promptText="Inv" />
+            </HBox>
+            <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                <Label prefWidth="100" text="Price/Cost" />
+                <TextField fx:id="price" promptText="Price/Cost" />
+            </HBox>
+            <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="5">
+                <Label prefWidth="100" text="Max" />
+                <TextField fx:id="max" promptText="Max" />
+            </HBox>
+            <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                <Label prefWidth="50" text="Min" />
+                <TextField fx:id="min" promptText="Min" />
+            </HBox>
+            <HBox fx:id="machineIDBox" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="6">
+                <Label prefWidth="100" text="Machine ID" />
+                <TextField fx:id="machineID" promptText="Mach ID" />
+            </HBox>
+            <HBox fx:id="companyBox" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="6" visible="false">
+                <Label prefWidth="100" text="Company" />
+                <TextField fx:id="company" promptText="Company" />
+            </HBox>
+        </GridPane>
+    </center>
+    <bottom>
+        <HBox spacing="10" alignment="bottom_right">
+            <Button text="Save" fx:id="saveButton" onAction="#handleSave" />
+            <Button text="Cancel" fx:id="cancelButton" onAction="#handleCancel" />
+        </HBox>
+    </bottom>
+</BorderPane>
